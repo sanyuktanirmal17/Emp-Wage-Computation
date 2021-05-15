@@ -35,6 +35,6 @@ do
    totalEmpHrs=$(( $totalEmpHrs+$workHours))
 done
 	wage=$(($EMP_RATE_PER_HR*$totalEmpHrs))
-
+   echo "total emp work hours : " $workHours
 
 
