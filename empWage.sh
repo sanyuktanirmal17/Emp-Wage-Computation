@@ -5,7 +5,7 @@ EMP_RATE_PER_HR=20
 IS_FULLTIME=1
 IS_PARTTIME=2
 NUM_OF_WORKING_DAYS=20
-MAX_HRS_IN_MONTH=20
+MAX_HRS_IN_MONTH=50
 
 #variables
 totalEmpHrs=0
@@ -25,16 +25,21 @@ case $1 in
 esac
    echo $empHrs
 }
+function calculateWage() {
+   workHours=$1
+   wage=$(($workHours*$EMP_RATE_PER_HR))
+   echo $wage
+}
 
 while [[ $totalEmpHrs -lt $MAX_HRS_IN_MONTH && $totalWorkingDays -lt $NUM_OF_WORKING_DAYS ]]
 
 do
   ((totalWorkingDays++))
    empCheck=$((RANDOM%3))
-	 workHours="$( getWorkingHrs $empCheck)"
+   workHours="$( getWorkingHrs $empCheck)"
    totalEmpHrs=$(( $totalEmpHrs+$workHours))
+   empDailyWage[$totalWorkingDays]="$(calculateWage $workHours)"
 done
-	wage=$(($EMP_RATE_PER_HR*$totalEmpHrs))
-   echo "total emp work hours : " $workHours
-
+wage=$(($EMP_RATE_PER_HR*$totalEmpHrs))
+echo daily wage : ${empDailyWage[@]}
 
