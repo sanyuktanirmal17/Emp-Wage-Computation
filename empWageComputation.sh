@@ -1,17 +1,24 @@
-#!/bin/bash -x
+#!/bin/bash
 
-empRatePerHr=20
-isFullTime=1
-isFullTime=2
-numOfWorkingDays=20
+#constants
+EMP_RATE_PER_HR=20
+IS_FULLTIME=1
+IS_PARTTIME=2
+NUM_OF_WORKING_DAYS=5
+MAX_HRS_IN_MONTH=20
 
-for ((day=1; day<=$numOfWorkingDays; day++))
+#variables
+totalEmpHrs=0
+totalWorkingDays=0
+
+while [[ $totalEmpHrs -lt $ $MAX_HRS_IN_MONTH && $totalEorkingDays -lt $NUM_OF_>
 do
+  ((totalWorkingDays++))
    empCheck=$((RANDOM%3))
    case $empCheck in
-   $isFullTime)
-      empHrs=8
-   ;;
+      $IS_FULLTIME)
+         empHrs=8
+     ;;
    $isPartTime)
       empHrs=4
    ;;
